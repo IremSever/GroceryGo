@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		612E18272B56B2C100B4B01C /* OrderConfirmationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E18262B56B2C100B4B01C /* OrderConfirmationResponse.swift */; };
+		6145F9E42B57EF1400542EA0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6145F9E32B57EF1400542EA0 /* Alamofire */; };
+		6199F97E2B5532700056A56E /* GroceryGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F97D2B5532700056A56E /* GroceryGoApp.swift */; };
+		6199F9802B5532700056A56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F97F2B5532700056A56E /* ContentView.swift */; };
+		6199F9822B5532710056A56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6199F9812B5532710056A56E /* Assets.xcassets */; };
+		6199F9852B5532710056A56E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6199F9842B5532710056A56E /* Preview Assets.xcassets */; };
+		6199F9872B5532710056A56E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9862B5532710056A56E /* Persistence.swift */; };
+		6199F98A2B5532710056A56E /* GroceryGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9882B5532710056A56E /* GroceryGo.xcdatamodeld */; };
+		6199F9922B5533030056A56E /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9912B5533030056A56E /* Products.swift */; };
+		6199F9952B55336C0056A56E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9942B55336C0056A56E /* CartView.swift */; };
+		6199F99A2B55345F0056A56E /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9992B55345F0056A56E /* CartManager.swift */; };
+		6199F99F2B5545FF0056A56E /* ButtonCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F99E2B5545FF0056A56E /* ButtonCart.swift */; };
+		6199F9A12B55462E0056A56E /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9A02B55462E0056A56E /* ProductCard.swift */; };
+		6199F9A32B5546560056A56E /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9A22B5546560056A56E /* ProductRow.swift */; };
+		6199F9A52B5546950056A56E /* ButtonPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9A42B5546950056A56E /* ButtonPayment.swift */; };
+		6199F9A92B5569AD0056A56E /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F9A82B5569AD0056A56E /* ShopView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		612E18262B56B2C100B4B01C /* OrderConfirmationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationResponse.swift; sourceTree = "<group>"; };
+		6199F97A2B5532700056A56E /* GroceryGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6199F97D2B5532700056A56E /* GroceryGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryGoApp.swift; sourceTree = "<group>"; };
+		6199F97F2B5532700056A56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../ContentView.swift; sourceTree = "<group>"; };
+		6199F9812B5532710056A56E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6199F9842B5532710056A56E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6199F9862B5532710056A56E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		6199F9892B5532710056A56E /* GroceryGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroceryGo.xcdatamodel; sourceTree = "<group>"; };
+		6199F9912B5533030056A56E /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		6199F9942B55336C0056A56E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		6199F9992B55345F0056A56E /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		6199F99E2B5545FF0056A56E /* ButtonCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCart.swift; sourceTree = "<group>"; };
+		6199F9A02B55462E0056A56E /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
+		6199F9A22B5546560056A56E /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
+		6199F9A42B5546950056A56E /* ButtonPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPayment.swift; sourceTree = "<group>"; };
+		6199F9A82B5569AD0056A56E /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6199F9772B5532700056A56E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6145F9E42B57EF1400542EA0 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6199F9712B5532700056A56E = {
+			isa = PBXGroup;
+			children = (
+				6199F97C2B5532700056A56E /* GroceryGo */,
+				6199F97B2B5532700056A56E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6199F97B2B5532700056A56E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6199F97A2B5532700056A56E /* GroceryGo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6199F97C2B5532700056A56E /* GroceryGo */ = {
+			isa = PBXGroup;
+			children = (
+				6199F99B2B5534900056A56E /* Components */,
+				6199F9932B5533350056A56E /* Views */,
+				6199F9902B5532E70056A56E /* Products */,
+				6199F97D2B5532700056A56E /* GroceryGoApp.swift */,
+				6199F9812B5532710056A56E /* Assets.xcassets */,
+				6199F9862B5532710056A56E /* Persistence.swift */,
+				6199F9882B5532710056A56E /* GroceryGo.xcdatamodeld */,
+				6199F9982B5534330056A56E /* Managers */,
+				6199F9832B5532710056A56E /* Preview Content */,
+			);
+			path = GroceryGo;
+			sourceTree = "<group>";
+		};
+		6199F9832B5532710056A56E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6199F9842B5532710056A56E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6199F9902B5532E70056A56E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6199F9912B5533030056A56E /* Products.swift */,
+				612E18262B56B2C100B4B01C /* OrderConfirmationResponse.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		6199F9932B5533350056A56E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6199F97F2B5532700056A56E /* ContentView.swift */,
+				6199F9942B55336C0056A56E /* CartView.swift */,
+				6199F9A82B5569AD0056A56E /* ShopView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6199F9982B5534330056A56E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6199F9992B55345F0056A56E /* CartManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		6199F99B2B5534900056A56E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6199F99E2B5545FF0056A56E /* ButtonCart.swift */,
+				6199F9A02B55462E0056A56E /* ProductCard.swift */,
+				6199F9A22B5546560056A56E /* ProductRow.swift */,
+				6199F9A42B5546950056A56E /* ButtonPayment.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6199F9792B5532700056A56E /* GroceryGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6199F98D2B5532710056A56E /* Build configuration list for PBXNativeTarget "GroceryGo" */;
+			buildPhases = (
+				6199F9762B5532700056A56E /* Sources */,
+				6199F9772B5532700056A56E /* Frameworks */,
+				6199F9782B5532700056A56E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GroceryGo;
+			packageProductDependencies = (
+				6145F9E32B57EF1400542EA0 /* Alamofire */,
+			);
+			productName = GroceryGo;
+			productReference = 6199F97A2B5532700056A56E /* GroceryGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6199F9722B5532700056A56E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					6199F9792B5532700056A56E = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 6199F9752B5532700056A56E /* Build configuration list for PBXProject "GroceryGo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6199F9712B5532700056A56E;
+			packageReferences = (
+				6145F9E22B57EF1400542EA0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = 6199F97B2B5532700056A56E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6199F9792B5532700056A56E /* GroceryGo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6199F9782B5532700056A56E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6199F9852B5532710056A56E /* Preview Assets.xcassets in Resources */,
+				6199F9822B5532710056A56E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6199F9762B5532700056A56E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				612E18272B56B2C100B4B01C /* OrderConfirmationResponse.swift in Sources */,
+				6199F9872B5532710056A56E /* Persistence.swift in Sources */,
+				6199F9A52B5546950056A56E /* ButtonPayment.swift in Sources */,
+				6199F99F2B5545FF0056A56E /* ButtonCart.swift in Sources */,
+				6199F9A32B5546560056A56E /* ProductRow.swift in Sources */,
+				6199F9802B5532700056A56E /* ContentView.swift in Sources */,
+				6199F99A2B55345F0056A56E /* CartManager.swift in Sources */,
+				6199F9952B55336C0056A56E /* CartView.swift in Sources */,
+				6199F9A12B55462E0056A56E /* ProductCard.swift in Sources */,
+				6199F9A92B5569AD0056A56E /* ShopView.swift in Sources */,
+				6199F9922B5533030056A56E /* Products.swift in Sources */,
+				6199F97E2B5532700056A56E /* GroceryGoApp.swift in Sources */,
+				6199F98A2B5532710056A56E /* GroceryGo.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6199F98B2B5532710056A56E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6199F98C2B5532710056A56E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6199F98E2B5532710056A56E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GroceryGo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4866964873;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iremsever.GroceryGo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6199F98F2B5532710056A56E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GroceryGo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4866964873;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iremsever.GroceryGo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6199F9752B5532700056A56E /* Build configuration list for PBXProject "GroceryGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6199F98B2B5532710056A56E /* Debug */,
+				6199F98C2B5532710056A56E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6199F98D2B5532710056A56E /* Build configuration list for PBXNativeTarget "GroceryGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6199F98E2B5532710056A56E /* Debug */,
+				6199F98F2B5532710056A56E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6145F9E22B57EF1400542EA0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6145F9E32B57EF1400542EA0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6145F9E22B57EF1400542EA0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6199F9882B5532710056A56E /* GroceryGo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6199F9892B5532710056A56E /* GroceryGo.xcdatamodel */,
+			);
+			currentVersion = 6199F9892B5532710056A56E /* GroceryGo.xcdatamodel */;
+			path = GroceryGo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6199F9722B5532700056A56E /* Project object */;
+}
