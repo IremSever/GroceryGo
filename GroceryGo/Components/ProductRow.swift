@@ -45,6 +45,10 @@ struct ProductRow: View {
                     .foregroundColor(.black)
                     .padding(.trailing, 45)
                 
+                
+                Image(systemName: "amount")
+                    .padding(3)
+                
                 Image(systemName: "plus")
                     .padding(3)
                     .foregroundColor(.white).bold()
