@@ -14,13 +14,13 @@ class CartManager: ObservableObject{
     
     func getData() {
         AF.request("https://i.tmgrup.com.tr/mulakat/get-liste.json").responseJSON { response in
-            print(response.request)
+            print(response.request ?? <#default value#>)
             print("<*> RESULT : ", response.result)
             
             switch response.result {
             case .success(let data):
                 print("<*> RESULT : ", data)
-            case .failure(let error):
+            case .failure(_):
                 break
             default:
                 break
