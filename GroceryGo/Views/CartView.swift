@@ -69,7 +69,7 @@ struct CartView: View {
             .navigationTitle(Text("My Cart"))
             .padding(.top)
             .onAppear{
-                cartManager.getData()
+                
             }
         }
 }
