@@ -19,7 +19,7 @@ struct ProductCard: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(Color.green)
                 .opacity(0.25)
-                .frame(width: 90, height: 90)
+                .frame(width: 80, height: 80)
             
             AsyncImage(url: URL(string: product.imageUrl)) { image in image
                     .resizable()
@@ -52,7 +52,7 @@ struct ProductCard: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .padding()
-                .frame(width: 120, height: 60)
+                .frame(width: 105, height: 60)
                 .cornerRadius(5)
                 .offset(y: 75)
                 Spacer()
@@ -60,7 +60,7 @@ struct ProductCard: View {
         }
         .overlay(
             Image(systemName: "plus")
-                .padding(9)
+                .padding(7)
                 .foregroundColor(.white)
                 .background(Color.green)
                 .cornerRadius(50)
@@ -70,7 +70,7 @@ struct ProductCard: View {
                     cartManager.addToCart(product: product)
                 }
         )
-        .frame(width: 90, height: 90)
+        .frame(width: 80, height: 80)
     }
 }
 

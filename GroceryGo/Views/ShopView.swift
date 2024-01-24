@@ -13,7 +13,7 @@ struct ShopView: View {
     @State private var isDataLoaded = false
     @State var errorMessage = ""
         
-    var columns = [GridItem(.adaptive(minimum: 120), spacing: 12)] // Adjusted width for ProductCard
+    var columns = [GridItem(.adaptive(minimum: 120), spacing: 12)]
         
     var body: some View {
         NavigationView {
@@ -34,7 +34,7 @@ struct ShopView: View {
                     Text("No products available")
                         .padding()
                 } else {
-                    LazyVGrid(columns: columns, spacing: 16) { // Adjusted spacing for ProductCard
+                    LazyVGrid(columns: columns, spacing: 80) { 
                         ForEach(cartManager.products, id: \.id) { product in
                             NavigationLink(destination: ProductCard(product: product).environmentObject(cartManager)) {
                                 ProductCard(product: product)
