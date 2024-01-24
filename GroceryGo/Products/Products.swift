@@ -6,20 +6,28 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Products: Identifiable {
-    var id = UUID()
-    var name: String
-    var image: String
-    var price: Int
+struct Products: Codable, Hashable {
+    let id: String
+    let name: String
+    let price: Double
+    let currency: String
+    let imageUrl: String
+    let stock: Int
+}
+struct Meta: Codable {
+    let statusCode: Int
+    let description: String
 }
 
-var productList = [Products(name: "Tomato", image: "1-tomato", price: 10),
-                   Products(name: "Cucumber", image: "2-cucumber", price: 10),
-                   Products(name: "Potato", image: "3-potato", price: 10),
-                   Products(name: "Coke", image: "4-coke", price: 10),
-                   Products(name: "Wafer", image: "5-wafer", price: 2),
-                   Products(name: "Bread", image: "6-bread", price: 10),
-                   Products(name: "Mushroom", image: "7-mushroom", price: 20),
-                   Products(name: "Icecream", image: "8-icecream", price: 10),
-                   Products(name: "water", image: "9-water", price: 10)]
+struct RootClass: Codable {
+    let meta: Meta
+    let data: [Products]
+}
+
+extension Products {
+    static var preview: Products {
+        Products(id: "5f52348e919ff34aed98d349", name: "Elma", price: 6.99, currency: "₺", imageUrl: "https://desolate-shelf-18786.herokuapp.com/images/elma.png", stock: 5)
+    }
+}

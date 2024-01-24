@@ -14,18 +14,22 @@ struct CartView: View {
     var body: some View {
         VStack {
             ScrollView {
-                if cartManager.products.count > 0 {
-                    let uniqueProductIds = Set(cartManager.products.map { $0.id })
-                    ForEach(Array(uniqueProductIds), id: \.self) { productId in
-                    if let product = cartManager.products.first(where: { $0.id == productId }) {
-                        ProductRow(product: product)
-                                .padding()
+                ScrollView {
+                    if cartManager.products.count > 0 {
+                        let uniqueProductIds = Set(cartManager.products.map { $0.id })
+                        ForEach(Array(uniqueProductIds), id: \.self) { productId in
+                            if let product = cartManager.products.first(where: { $0.id == productId }) {
+                                ProductCard(product: product)
+                                    .padding()
+                            }
                         }
+                    } else {
+                        Text("Your cart is Empty")
                     }
-                } else {
-                    Text("Your cart is Empty")
                 }
             }
+            
+                
             if cartManager.products.count > 0 {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
