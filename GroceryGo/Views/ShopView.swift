@@ -18,33 +18,34 @@ struct ShopView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                if !isDataLoaded {
-                    ProgressView("Loading products...")
-                        .onAppear {
-                            Task {
-                                do {
-                                    try await cartManager.fetchProduct()
-                                    isDataLoaded = true
-                                } catch {
-                                    errorMessage = error.localizedDescription
+                VStack {
+                    if !isDataLoaded {
+                        ProgressView("Loading products...")
+                            .onAppear {
+                                Task {
+                                    do {
+                                        try await cartManager.fetchProduct()
+                                        isDataLoaded = true
+                                    } catch {
+                                        errorMessage = error.localizedDescription
+                                    }
                                 }
                             }
-                        }
-                } else if cartManager.products.isEmpty {
-                    Text("No products available")
-                        .padding()
-                } else {
-                    LazyVGrid(columns: columns, spacing: 80) {
-                        ForEach(cartManager.products, id: \.id) { product in
-                            NavigationLink(destination: ProductCard(product: product).environmentObject(cartManager)) {
+                    } else if cartManager.products.isEmpty {
+                        Text("No products available")
+                            .padding()
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 80) {
+                            ForEach(cartManager.products, id: \.id) { product in
                                 ProductCard(product: product)
                                     .environmentObject(cartManager)
                             }
                         }
+                        .padding(.top, 20) // Ürünlerin biraz daha aşağıdan başlaması için eklenen padding
                     }
                 }
             }
-            .navigationTitle(Text("Grocery Go"))
+            .navigationTitle("Grocery Go")
             .navigationViewStyle(StackNavigationViewStyle())
             .toolbar {
                 NavigationLink(destination: CartView().environmentObject(cartManager)) {
