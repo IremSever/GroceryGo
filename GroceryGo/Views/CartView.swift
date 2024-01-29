@@ -25,9 +25,7 @@ struct CartView: View {
                     }
                 }
 
-
-
-                if cartManager.products.count > 0 {
+                if cartManager.cartItems.count > 0 { // Check if cart is not empty
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.green)
@@ -70,14 +68,8 @@ struct CartView: View {
             .padding(.top)
         }
     }
-    // price as float
-    private func formatPrice(_ price: Float) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = "₺"
-        return formatter.string(from: NSNumber(value: price)) ?? ""
-    }
 }
+
     struct CartView_Previews: PreviewProvider {
         static var previews: some View {
             CartView()
