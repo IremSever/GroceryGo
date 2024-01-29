@@ -34,7 +34,7 @@ struct ProductRow: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(product.name).bold()
-                Text("₺\(product.price)")
+                Text(formatPrice(product.price))
             }
             Spacer()
 
@@ -99,8 +99,15 @@ struct ProductRow: View {
                 }
         )
     }
-}
 
+    // Format price as float
+    private func formatPrice(_ price: Float) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "₺"
+        return formatter.string(from: NSNumber(value: price)) ?? ""
+    }
+}
 struct ProductRow_Previews: PreviewProvider {
     static var previews: some View {
         let cartManager = CartManager()

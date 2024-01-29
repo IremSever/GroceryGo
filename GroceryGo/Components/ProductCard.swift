@@ -9,50 +9,50 @@
 import SwiftUI
 
 struct ProductCard: View {
-    
+
     @EnvironmentObject var cartManager: CartManager
     var product: Products
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(Color.green)
                 .opacity(0.25)
                 .frame(width: 80, height: 80)
-            
-            
+
+
             AsyncImage(url: URL(string: product.imageUrl)) { image in image
-                                .resizable()
-                                .cornerRadius(20)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 120)
-                                .shadow(radius: 5)
-                        } placeholder: {
-                            Color.gray
-                                .cornerRadius(20)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 120)
-                                .shadow(radius: 5)
-                        }
+                .resizable()
+                .cornerRadius(20)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 120)
+                .shadow(radius: 5)
+            } placeholder: {
+                Color.gray
+                    .cornerRadius(20)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120)
+                    .shadow(radius: 5)
+            }
 
             VStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("₺\(product.price)")
+                    Text(formatPrice(product.price))
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .center)
-                    
+
                     Text(product.name)
                         .font(.caption).bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
-                    
-                    if product.stock >= 0 {
+
+                    if product.stock > 0 {
                         Text("Stock: \(product.stock)")
                             .font(.caption)
                             .foregroundColor(.gray)
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
-                        Text("Stokta Yok")
+                        Text("Out of Stock")
                             .font(.caption)
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -80,6 +80,13 @@ struct ProductCard: View {
                 }
         )
         .frame(width: 80, height: 80)
+    }
+
+    private func formatPrice(_ price: Float) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "₺"
+        return formatter.string(from: NSNumber(value: price)) ?? ""
     }
 }
 
