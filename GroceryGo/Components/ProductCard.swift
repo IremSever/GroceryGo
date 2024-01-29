@@ -11,9 +11,7 @@ import SwiftUI
 struct ProductCard: View {
     @EnvironmentObject var cartManager: CartManager
     var product: Products
-    
-    @State private var stock: Int // Add a local state for stock count
-    
+    @State private var stock: Int
     init(product: Products) {
         self.product = product
         self._stock = State(initialValue: product.stock)
@@ -52,17 +50,26 @@ struct ProductCard: View {
                         .font(.caption).bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
 
-                    Text("Stock: \(stock)")
-                        .font(.caption)
-                        .foregroundColor(stock > 0 ? .gray : .red)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .onTapGesture {
-                            if stock > 0 {
-                                cartManager.addToCart(product: product)
-                                stock -= 1
+                    if stock > 0 {
+                        Text("Stock: \(stock)")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .onTapGesture {
+                                if stock > 0 {
+                                    cartManager.addToCart(product: product)
+                                    stock -= 1 // Update local stock count
+                                    if stock == 0 {
+                                        print("\(product.name) is out of stock")
+                                    }
+                                }
                             }
-                        }
-
+                    } else {
+                        Text("Out of Stock")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
                 }
                 .padding()
                 .frame(width: 105, height: 80)
@@ -83,6 +90,9 @@ struct ProductCard: View {
                     if stock > 0 {
                         cartManager.addToCart(product: product)
                         stock -= 1
+                        if stock == 0 {
+                            print("\(product.name) is out of stock")
+                        }
                     }
                 }
         )
