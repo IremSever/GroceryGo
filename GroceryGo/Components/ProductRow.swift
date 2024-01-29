@@ -63,8 +63,8 @@ struct ProductRow: View {
                         .padding(7)
                         .background(Color.red)
                         .cornerRadius(5)
-                        .offset(x: -115)
                 }
+                .offset(x: -10)
             }
 
             if isTrashVisible {
