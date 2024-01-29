@@ -34,7 +34,7 @@ struct ShopView: View {
                     Text("No products available")
                         .padding()
                 } else {
-                    LazyVGrid(columns: columns, spacing: 80) { 
+                    LazyVGrid(columns: columns, spacing: 80) {
                         ForEach(cartManager.products, id: \.id) { product in
                             NavigationLink(destination: ProductCard(product: product).environmentObject(cartManager)) {
                                 ProductCard(product: product)
@@ -48,7 +48,7 @@ struct ShopView: View {
             .navigationViewStyle(StackNavigationViewStyle())
             .toolbar {
                 NavigationLink(destination: CartView().environmentObject(cartManager)) {
-                    ButtonCart(numberOfProducts: cartManager.products.count)
+                    ButtonCart(cartManager: cartManager)
                 }
             }
             Text(errorMessage)

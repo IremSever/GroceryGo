@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ButtonCart: View {
-    var numberOfProducts : Int
+    
+    @ObservedObject var cartManager: CartManager
     var body: some View {
         ZStack(alignment: .topTrailing){
             Image(systemName: "cart")
                 .resizable()
-                .frame(width: 30,height: 30)
+                .frame(width: 30, height: 30)
                 .padding(.top, 20)
             
-            
-            if numberOfProducts > 0 {
-                Text("\(numberOfProducts)")
+            if cartManager.amount > 0 { // Burada cartManager.amount'un 0'dan büyük olup olmadığını kontrol ediyoruz.
+                Text("\(cartManager.amount)")
                     .font(.caption2).bold()
                     .foregroundColor(.white)
                     .frame(width: 20, height: 20)
@@ -32,6 +32,6 @@ struct ButtonCart: View {
 
 struct ButtonCart_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonCart(numberOfProducts: 1)
+        ButtonCart(cartManager: CartManager())
     }
 }

@@ -108,4 +108,3 @@ struct ProductRow_Previews: PreviewProvider {
             .environmentObject(cartManager)
     }
 }
-

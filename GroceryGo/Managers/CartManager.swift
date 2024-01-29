@@ -11,8 +11,10 @@ class CartManager: ObservableObject {
     
     let client = StoreHTTPClient()
     @Published var products: [Products] = []
-    @Published private(set) var total: Double = 0
-    
+    @Published var productsInCart: [Products] = []
+    @Published private(set) var total: Float = 0
+    @Published private(set) var amount: Int = 0
+       
     func fetchProduct() async throws {
         let url = URL.allProducts
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -23,17 +25,29 @@ class CartManager: ObservableObject {
         let decodedData = try JSONDecoder().decode(RootClass.self, from: data)
         products = decodedData.data
     }
-    
+       
     func addToCart(product: Products) {
-        products.append(product)
-        total += product.price
+        if let index = products.firstIndex(where: { $0.id == product.id }) {
+            if products[index].stock > 0 {
+                products[index].stock -= 1
+                total += product.price
+                productsInCart.append(product)
+                amount += 1
+            }
+        }
     }
-    
+        
     func removeFromCart(product: Products) {
-        if let index = products.firstIndex(of: product) {
-            products.remove(at: index)
+        if let index = products.firstIndex(where: { $0.id == product.id }) {
+            products[index].stock += 1
             total -= product.price
+            if products[index].stock == 0 {
+                products.remove(at: index)
+            }
+        }
+        if let index = productsInCart.firstIndex(of: product) {
+            productsInCart.remove(at: index)
+            amount -= 1
         }
     }
 }
-

@@ -11,10 +11,10 @@ import SwiftUI
 struct Products: Codable, Hashable {
     let id: String
     let name: String
-    let price: Double
+    let price: Float
     let currency: String
     let imageUrl: String
-    let stock: Int
+    var stock: Int
 }
 
 extension Products {
@@ -38,15 +38,12 @@ struct RootClass: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        // Handle the decoding of "meta" section
         do {
             meta = try container.decode(Meta.self, forKey: .meta)
         } catch {
-            // If "statusCode" key is not found, provide a default value
             meta = Meta(statusCode: 200, description: "")
         }
 
-        // Decode the "data" section
         data = try container.decode([Products].self, forKey: .data)
     }
 }
