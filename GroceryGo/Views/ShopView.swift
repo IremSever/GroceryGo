@@ -24,7 +24,7 @@ struct ShopView: View {
                             .onAppear {
                                 Task {
                                     do {
-                                        try await cartManager.fetchProduct()
+                                        try await cartManager.fetchProducts()
                                         isDataLoaded = true
                                     } catch {
                                         errorMessage = error.localizedDescription
@@ -58,7 +58,7 @@ struct ShopView: View {
         .onAppear {
             Task {
                 do {
-                    try await cartManager.fetchProduct()
+                    try await cartManager.fetchProducts()
                     isDataLoaded = true
                 } catch {
                     print("Error fetching products: \(error)")
@@ -75,3 +75,5 @@ struct ShopView: View {
         }
     }
 }
+
+

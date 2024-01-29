@@ -15,15 +15,17 @@ struct CartView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    if cartManager.productsInCart.count > 0 {
-                        ForEach(cartManager.productsInCart, id: \.id) { product in
-                            ProductRow(product: product)
+                    if cartManager.cartItems.count > 0 {
+                        ForEach(cartManager.cartItems, id: \.product.id) { cartItem in
+                            ProductRow(product: cartItem.product)
                                 .padding()
                         }
                     } else {
                         Text("Your cart is Empty")
                     }
                 }
+
+
 
                 if cartManager.products.count > 0 {
                     ZStack {

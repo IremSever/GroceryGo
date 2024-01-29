@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ProductCard: View {
-
     @EnvironmentObject var cartManager: CartManager
     var product: Products
 
@@ -18,20 +17,20 @@ struct ProductCard: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(Color.green)
                 .opacity(0.25)
-                .frame(width: 80, height: 80)
+                .frame(width: 105, height: 85)
 
-
-            AsyncImage(url: URL(string: product.imageUrl)) { image in image
-                .resizable()
-                .cornerRadius(20)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 120)
-                .shadow(radius: 5)
+            AsyncImage(url: URL(string: product.imageUrl)) { image in
+                image
+                    .resizable()
+                    .cornerRadius(20)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .shadow(radius: 5)
             } placeholder: {
                 Color.gray
                     .cornerRadius(20)
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 120)
+                    .frame(width: 100, height: 100)
                     .shadow(radius: 5)
             }
 
@@ -59,15 +58,15 @@ struct ProductCard: View {
                     }
                 }
                 .padding()
-                .frame(width: 105, height: 60)
+                .frame(width: 105, height: 80)
                 .cornerRadius(5)
-                .offset(y: 75)
+                .offset(y: 85)
                 Spacer()
             }
         }
         .overlay(
             Image(systemName: "plus")
-                .padding(7)
+                .padding(8)
                 .foregroundColor(product.stock > 0 ? .white : .gray)
                 .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.5))
                 .cornerRadius(50)
@@ -79,8 +78,9 @@ struct ProductCard: View {
                     }
                 }
         )
-        .frame(width: 80, height: 80)
+        .frame(width: 100, height: 100)
     }
+
     // price as float
     private func formatPrice(_ price: Float) -> String {
         let formatter = NumberFormatter()
@@ -97,4 +97,5 @@ struct ProductCard_Previews: PreviewProvider {
             .environmentObject(cartManager)
     }
 }
+
 

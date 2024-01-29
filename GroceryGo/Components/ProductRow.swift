@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ProductRow: View {
     @EnvironmentObject var cartManager: CartManager
-    let product: Products
+    public let product: Products
 
-    @State private var offset: CGFloat = 0
     @State private var isTrashVisible = false
 
     private var productCountInCart: Int {
-        cartManager.products.filter { $0.id == product.id }.count
+        cartManager.cartItemCount(for: product)
     }
 
     var body: some View {
-
         HStack(spacing: 10) {
             AsyncImage(url: URL(string: product.imageUrl)) { image in
                 image
@@ -81,26 +79,8 @@ struct ProductRow: View {
         .padding(.horizontal)
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
-        .offset(x: offset)
-        .gesture(
-            DragGesture()
-                .onChanged { value in
-                    self.offset = value.translation.width
-                    self.isTrashVisible = self.offset < 0
-                }
-                .onEnded { value in
-                    if self.offset < -50 {
-                        self.offset = -2500
-                        cartManager.removeFromCart(product: product)
-                    } else {
-                        self.offset = 0
-                        self.isTrashVisible = false
-                    }
-                }
-        )
     }
 
-    // price as float
     private func formatPrice(_ price: Float) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -108,6 +88,7 @@ struct ProductRow: View {
         return formatter.string(from: NSNumber(value: price)) ?? ""
     }
 }
+
 struct ProductRow_Previews: PreviewProvider {
     static var previews: some View {
         let cartManager = CartManager()
