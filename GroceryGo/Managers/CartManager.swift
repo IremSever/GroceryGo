@@ -42,7 +42,6 @@ class CartManager: ObservableObject {
             }
         }
     }
-
         
     func removeFromCart(product: Products) {
         if let index = products.firstIndex(where: { $0.id == product.id }) {
