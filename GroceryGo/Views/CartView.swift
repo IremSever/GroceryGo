@@ -68,11 +68,17 @@ struct CartView: View {
             .padding(.top)
         }
     }
-
+    private func formatPrice(_ price: Float) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "₺"
+        return formatter.string(from: NSNumber(value: price)) ?? ""
+    }
+}
     struct CartView_Previews: PreviewProvider {
         static var previews: some View {
             CartView()
                 .environmentObject(CartManager())
         }
     }
-}
+
