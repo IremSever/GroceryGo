@@ -52,14 +52,14 @@ struct ProductCard: View {
                         .font(.caption).bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
 
-                    Text("Stock: \(stock)") // Use local stock count
+                    Text("Stock: \(stock)")
                         .font(.caption)
                         .foregroundColor(stock > 0 ? .gray : .red)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .onTapGesture {
                             if stock > 0 {
                                 cartManager.addToCart(product: product)
-                                stock -= 1 // Update local stock count
+                                stock -= 1
                             }
                         }
 
@@ -82,7 +82,7 @@ struct ProductCard: View {
                 .onTapGesture {
                     if stock > 0 {
                         cartManager.addToCart(product: product)
-                        stock -= 1 // Update local stock count
+                        stock -= 1
                     }
                 }
         )
