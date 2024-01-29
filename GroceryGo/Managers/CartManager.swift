@@ -27,15 +27,22 @@ class CartManager: ObservableObject {
     }
        
     func addToCart(product: Products) {
-        if let index = products.firstIndex(where: { $0.id == product.id }) {
-            if products[index].stock > 0 {
-                products[index].stock -= 1
-                total += product.price
-                productsInCart.append(product)
-                amount += 1
+        if let index = productsInCart.firstIndex(where: { $0.id == product.id }) {
+            productsInCart[index].stock -= 1
+            total += product.price
+            amount += 1
+        } else {
+            if let index = products.firstIndex(where: { $0.id == product.id }) {
+                if products[index].stock > 0 {
+                    products[index].stock -= 1
+                    total += product.price
+                    productsInCart.append(product)
+                    amount += 1
+                }
             }
         }
     }
+
         
     func removeFromCart(product: Products) {
         if let index = products.firstIndex(where: { $0.id == product.id }) {
