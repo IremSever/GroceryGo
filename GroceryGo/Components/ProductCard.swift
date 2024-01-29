@@ -68,8 +68,8 @@ struct ProductCard: View {
         .overlay(
             Image(systemName: "plus")
                 .padding(7)
-                .foregroundColor(.white)
-                .background(Color.green)
+                .foregroundColor(product.stock > 0 ? .white : .gray) // Stok varsa yeşil, yoksa gri
+                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.5)) // Stok varsa yeşil, yoksa gri (hafif opaklık)
                 .cornerRadius(50)
                 .offset(x: 45, y: -40)
                 .padding()
@@ -90,3 +90,4 @@ struct ProductCard_Previews: PreviewProvider {
             .environmentObject(cartManager)
     }
 }
+
