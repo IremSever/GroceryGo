@@ -11,6 +11,13 @@ import SwiftUI
 struct ProductCard: View {
     @EnvironmentObject var cartManager: CartManager
     var product: Products
+    
+    @State private var stock: Int // Add a local state for stock count
+    
+    init(product: Products) {
+        self.product = product
+        self._stock = State(initialValue: product.stock)
+    }
 
     var body: some View {
         ZStack {
@@ -45,17 +52,17 @@ struct ProductCard: View {
                         .font(.caption).bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
 
-                    if product.stock > 0 {
-                        Text("Stock: \(product.stock)")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    } else {
-                        Text("Out of Stock")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
+                    Text("Stock: \(stock)") // Use local stock count
+                        .font(.caption)
+                        .foregroundColor(stock > 0 ? .gray : .red)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onTapGesture {
+                            if stock > 0 {
+                                cartManager.addToCart(product: product)
+                                stock -= 1 // Update local stock count
+                            }
+                        }
+
                 }
                 .padding()
                 .frame(width: 105, height: 80)
@@ -67,14 +74,15 @@ struct ProductCard: View {
         .overlay(
             Image(systemName: "plus")
                 .padding(8)
-                .foregroundColor(product.stock > 0 ? .white : .gray)
-                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.5))
+                .foregroundColor(stock > 0 ? .white : .gray)
+                .background(stock > 0 ? Color.green : Color.gray.opacity(0.7))
                 .cornerRadius(50)
                 .offset(x: 45, y: -40)
                 .padding()
                 .onTapGesture {
-                    if product.stock > 0 {
+                    if stock > 0 {
                         cartManager.addToCart(product: product)
+                        stock -= 1 // Update local stock count
                     }
                 }
         )
@@ -89,6 +97,7 @@ struct ProductCard: View {
         return formatter.string(from: NSNumber(value: price)) ?? ""
     }
 }
+
 
 struct ProductCard_Previews: PreviewProvider {
     static var previews: some View {
