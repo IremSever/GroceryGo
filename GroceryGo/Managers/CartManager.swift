@@ -34,14 +34,24 @@ class CartManager: ObservableObject {
 
     func addToCart(product: Products) {
         if let index = cartItems.firstIndex(where: { $0.product.id == product.id }) {
-            cartItems[index].quantity += 1
+            if cartItems[index].quantity < product.stock {
+                cartItems[index].quantity += 1
+                total += product.price
+                amount += 1
+            } else {
+                print("Stock limit reached for \(product.name)")
+            }
         } else {
-            cartItems.append(CartItem(product: product, quantity: 1))
+            if product.stock > 0 {
+                cartItems.append(CartItem(product: product, quantity: 1))
+                total += product.price
+                amount += 1
+            } else {
+                print("\(product.name) is out of stock")
+            }
         }
-        total += product.price
-        amount += 1
     }
-
+    
     func removeFromCart(product: Products) {
         if let index = cartItems.firstIndex(where: { $0.product.id == product.id }) {
             cartItems[index].quantity -= 1
