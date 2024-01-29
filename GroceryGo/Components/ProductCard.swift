@@ -68,8 +68,8 @@ struct ProductCard: View {
         .overlay(
             Image(systemName: "plus")
                 .padding(7)
-                .foregroundColor(product.stock > 0 ? .white : .gray) // Stok varsa yeşil, yoksa gri
-                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.5)) // Stok varsa yeşil, yoksa gri (hafif opaklık)
+                .foregroundColor(product.stock > 0 ? .white : .gray)
+                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.5))
                 .cornerRadius(50)
                 .offset(x: 45, y: -40)
                 .padding()
@@ -81,7 +81,7 @@ struct ProductCard: View {
         )
         .frame(width: 80, height: 80)
     }
-
+    // price as float
     private func formatPrice(_ price: Float) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

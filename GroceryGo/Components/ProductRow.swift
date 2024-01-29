@@ -100,7 +100,7 @@ struct ProductRow: View {
         )
     }
 
-    // Format price as float
+    // price as float
     private func formatPrice(_ price: Float) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

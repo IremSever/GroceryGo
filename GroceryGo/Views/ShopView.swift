@@ -41,7 +41,7 @@ struct ShopView: View {
                                     .environmentObject(cartManager)
                             }
                         }
-                        .padding(.top, 20) // Ürünlerin biraz daha aşağıdan başlaması için eklenen padding
+                        .padding(.top, 20)
                     }
                 }
             }

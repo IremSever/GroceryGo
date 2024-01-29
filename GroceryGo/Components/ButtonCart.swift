@@ -17,7 +17,7 @@ struct ButtonCart: View {
                 .frame(width: 30, height: 30)
                 .padding(.top, 20)
             
-            if cartManager.amount > 0 { // Burada cartManager.amount'un 0'dan büyük olup olmadığını kontrol ediyoruz.
+            if cartManager.amount > 0 {
                 Text("\(cartManager.amount)")
                     .font(.caption2).bold()
                     .foregroundColor(.white)

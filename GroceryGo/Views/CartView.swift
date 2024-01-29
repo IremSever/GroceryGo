@@ -68,6 +68,7 @@ struct CartView: View {
             .padding(.top)
         }
     }
+    // price as float
     private func formatPrice(_ price: Float) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
