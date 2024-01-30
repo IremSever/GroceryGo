@@ -10,7 +10,6 @@ import Foundation
 
 class CartManager: ObservableObject {
 
-    let client = StoreHTTPClient()
     @Published var products: [Products] = []
     @Published private(set) var total: Float = 0
     @Published private(set) var amount: Int = 0

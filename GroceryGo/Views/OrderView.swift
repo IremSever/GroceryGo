@@ -29,8 +29,8 @@ struct OrderView: View {
             .foregroundColor(.green)
             .offset(y: -200)
         }
-        .navigationBarBackButtonHidden(true) // Geri dönme butonunu gizle
-        .navigationBarHidden(true) // Navigasyon çubuğunu gizle
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
