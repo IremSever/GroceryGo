@@ -74,7 +74,6 @@ struct ProductCard: View {
                         cartManager.addToCart(product: product)
                         var updatedProduct = product
                         updatedProduct.stock -= 1
-                        
                     } else {
                         print("\(product.name) is out of stock")
                     }
