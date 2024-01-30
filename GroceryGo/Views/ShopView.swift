@@ -14,7 +14,6 @@ struct ShopView: View {
     @State var errorMessage = ""
         
     var columns = [GridItem(.adaptive(minimum: 120), spacing: 12)]
-        
     var body: some View {
         NavigationView {
             ScrollView {

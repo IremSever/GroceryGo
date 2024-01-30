@@ -23,6 +23,9 @@ struct CartView: View {
                         }
                     } else {
                         Text("Your cart is Empty")
+                            .foregroundColor(.green)
+                            .font(.system(size: 20))
+                            .offset(y: 200)
                     }
                 }
 
