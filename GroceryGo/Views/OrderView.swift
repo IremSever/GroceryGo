@@ -8,37 +8,29 @@
 import SwiftUI
 
 struct OrderView: View {
-    @State var changeScreen = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 30){
-                Image("order")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 1000, height: 850)
-                Text("Thank You For Your Order!")
-                    .font(.system(size: 31, weight: .bold, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.orange)
-                    .offset(y:-300)
-                Button(){
-                    changeScreen = true
-                } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 50)
-                        Text("Back Home")
-                            .foregroundColor(.white)
-                            .bold()
-                    }
-                }.frame(width: 150, height: 50)
-                    .foregroundColor(.green)
-                    .offset(y:-200)
+        VStack(spacing: 30){
+            Image("order")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 1000, height: 850)
+            Text("Thank You For Your Order!")
+                .font(.system(size: 31, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.orange)
+                .offset(y:-300)
+            Button("Back Home") {
+                presentationMode.wrappedValue.dismiss()
             }
-            .navigationDestination(isPresented: $changeScreen) {
-                ShopView()
-            }
+            .frame(width: 150, height: 50)
+            .foregroundColor(.white)
+            .background(Color.green)
+            .cornerRadius(25)
+            .offset(y:-200)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

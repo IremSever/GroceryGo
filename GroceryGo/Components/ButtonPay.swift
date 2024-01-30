@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ButtonPay: View {
     var payNowAction: () -> Void
-
+    @State private var isPresented = false
         var body: some View {
             Button(action: {
                 payNowAction()
             }) {
-                ZStack {
+                NavigationLink(destination: OrderView(), isActive: $isPresented) {
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder()
                         .frame(width: 120, height: 60)
@@ -24,12 +24,12 @@ struct ButtonPay: View {
                     Text("Pay Now")
                         .foregroundColor(.white)
                         .font(.system(size: 25, weight: .bold))
-                }.offset(x: 80, y: -45)
-                  
+                        .offset(x: -118)
+                }.offset(x: 150, y: -45)
+                
             }
         }
     }
-
 struct ButtonPay_Previews: PreviewProvider {
     static var previews: some View {
         ButtonPay(payNowAction: {})
