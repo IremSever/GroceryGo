@@ -22,7 +22,7 @@ struct CartView: View {
                                 .padding()
                         }
                     } else {
-                        Text("Your cart is Empty")
+                        Text("Your cart is empty")
                             .foregroundColor(.green)
                             .font(.system(size: 20))
                             .offset(y: 200)
@@ -41,7 +41,7 @@ struct CartView: View {
                                         .foregroundColor(Color.white)
                                         .frame(width: 350, alignment: .leading)
                                         .padding(.leading, 60)
-                                    Text("₺\(String(format: "%.2f", cartManager.total))") // Total price formatted as float
+                                    Text("₺\(String(format: "%.2f", cartManager.total))")
                                         .font(.system(size: 26, weight: .bold))
                                         .foregroundColor(Color.white)
                                         .frame(width: 350, alignment: .leading)

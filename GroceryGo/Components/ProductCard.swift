@@ -65,7 +65,7 @@ struct ProductCard: View {
             Image(systemName: "plus")
                 .padding(8)
                 .foregroundColor(.white)
-                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.7)) // Update based on product's stock
+                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.7)) 
                 .cornerRadius(50)
                 .offset(x: 45, y: -45)
                 .padding()
