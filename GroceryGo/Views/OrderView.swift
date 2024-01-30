@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrderView: View {
     @Environment(\.presentationMode) var presentationMode
+    @State private var navigateToShopView = false
 
     var body: some View {
         VStack(spacing: 30) {
@@ -21,12 +22,21 @@ struct OrderView: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.orange)
                 .offset(y: -300)
+
+            NavigationLink(destination: ShopView(), isActive: $navigateToShopView) {
+                EmptyView()
+            }
             
             Button("Back Home") {
-                presentationMode.wrappedValue.dismiss()
+                navigateToShopView = true
+                // presentationMode.wrappedValue.dismiss() // You can still dismiss the current view if needed
             }
             .frame(width: 150, height: 50)
-            .foregroundColor(.green)
+            .font(.system(size: 20))
+            .foregroundColor(.white)
+            .background(.green)
+            .bold()
+            .cornerRadius(10)
             .offset(y: -200)
         }
         .navigationBarBackButtonHidden(true)
