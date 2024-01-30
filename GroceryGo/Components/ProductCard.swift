@@ -19,11 +19,6 @@ struct ProductCard: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color.green)
-                .opacity(0.25)
-                .frame(width: 105, height: 85)
-
             AsyncImage(url: URL(string: product.imageUrl)) { image in
                 image
                     .resizable()
