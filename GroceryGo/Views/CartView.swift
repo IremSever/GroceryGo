@@ -25,10 +25,11 @@ struct CartView: View {
                     }
                 }
 
-                if cartManager.cartItems.count > 0 { // Check if cart is not empty
+                if cartManager.cartItems.count > 0 {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.green)
+                            .opacity(0.5)
                             .frame(width: 350, height: 100)
                             .overlay(
                                 VStack {
@@ -48,27 +49,45 @@ struct CartView: View {
                     }
                     .padding(.bottom, -60)
 
-                    Button() {
-                        isPayment = true
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .strokeBorder()
-                                .frame(width: 120, height: 60)
-                                .foregroundColor(.white)
-                                .bold()
-                            Text("Pay Now")
-                                .foregroundColor(.white)
-                                .font(.system(size: 25, weight: .bold))
-                        }.offset(x: 80, y: -45)
-                    }
+                    ButtonPay(payNowAction: payNow)
                 }
             }
             .navigationTitle("My Cart")
             .padding(.top)
         }
     }
-}
+
+    private func payNow() {
+        guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+
+            if let response = response as? HTTPURLResponse {
+                print("Response status code: \(response.statusCode)")
+            }
+
+            if let data = data {
+                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }.resume()
+    }
+
+    private func formatPrice(_ price: Float) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "₺"
+        return formatter.string(from: NSNumber(value: price)) ?? ""
+    }
 
     struct CartView_Previews: PreviewProvider {
         static var previews: some View {
@@ -76,4 +95,4 @@ struct CartView: View {
                 .environmentObject(CartManager())
         }
     }
-
+}

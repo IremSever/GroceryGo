@@ -63,6 +63,7 @@ struct ProductRow: View {
                         .padding(7)
                         .background(Color.red)
                         .cornerRadius(5)
+                    
                 }
                 .offset(x: -115)
             }
