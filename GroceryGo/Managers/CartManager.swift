@@ -19,6 +19,7 @@ class CartManager: ObservableObject {
     struct CartItem {
         var product: Products
         var quantity: Int
+        var stock: Int
     }
     
     func fetchProducts() async throws {
@@ -34,23 +35,30 @@ class CartManager: ObservableObject {
 
     func addToCart(product: Products) {
         if let index = cartItems.firstIndex(where: { $0.product.id == product.id }) {
-            if cartItems[index].quantity < product.stock {
+            if cartItems[index].quantity < cartItems[index].stock {
                 cartItems[index].quantity += 1
                 total += product.price
                 amount += 1
+                if let productIndex = products.firstIndex(where: { $0.id == product.id }) {
+                    products[productIndex].stock -= 1
+                }
             } else {
                 print("Stock limit reached for \(product.name)")
             }
         } else {
             if product.stock > 0 {
-                cartItems.append(CartItem(product: product, quantity: 1))
+                cartItems.append(CartItem(product: product, quantity: 1, stock: product.stock))
                 total += product.price
                 amount += 1
+                if let productIndex = products.firstIndex(where: { $0.id == product.id }) {
+                    products[productIndex].stock -= 1
+                }
             } else {
                 print("\(product.name) is out of stock")
             }
         }
     }
+
     
     func removeFromCart(product: Products) {
         if let index = cartItems.firstIndex(where: { $0.product.id == product.id }) {

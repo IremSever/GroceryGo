@@ -11,11 +11,6 @@ import SwiftUI
 struct ProductCard: View {
     @EnvironmentObject var cartManager: CartManager
     var product: Products
-    @State private var stock: Int
-    init(product: Products) {
-        self.product = product
-        self._stock = State(initialValue: product.stock)
-    }
 
     var body: some View {
         ZStack {
@@ -45,26 +40,9 @@ struct ProductCard: View {
                         .font(.caption).bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
 
-                    if stock > 0 {
-                        Text("Stock: \(stock)")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .onTapGesture {
-                                if stock > 0 {
-                                    cartManager.addToCart(product: product)
-                                    stock -= 1 
-                                    if stock == 0 {
-                                        print("\(product.name) is out of stock")
-                                    }
-                                }
-                            }
-                    } else {
-                        Text("Out of Stock")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
+                    Text("Stock: \(product.stock)") // Display product's stock here
+
+                    // Removed the onTapGesture here
                 }
                 .padding()
                 .frame(width: 105, height: 80)
@@ -77,17 +55,18 @@ struct ProductCard: View {
             Image(systemName: "plus")
                 .padding(8)
                 .foregroundColor(.white)
-                .background(stock > 0 ? Color.green : Color.gray.opacity(0.7))
+                .background(product.stock > 0 ? Color.green : Color.gray.opacity(0.7)) // Update based on product's stock
                 .cornerRadius(50)
                 .offset(x: 45, y: -45)
                 .padding()
                 .onTapGesture {
-                    if stock > 0 {
+                    if product.stock > 0 {
                         cartManager.addToCart(product: product)
-                        stock -= 1
-                        if stock == 0 {
-                            print("\(product.name) is out of stock")
-                        }
+                        var updatedProduct = product
+                        updatedProduct.stock -= 1
+                        
+                    } else {
+                        print("\(product.name) is out of stock")
                     }
                 }
         )
@@ -102,7 +81,6 @@ struct ProductCard: View {
         return formatter.string(from: NSNumber(value: price)) ?? ""
     }
 }
-
 
 struct ProductCard_Previews: PreviewProvider {
     static var previews: some View {
