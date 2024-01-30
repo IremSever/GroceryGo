@@ -57,11 +57,14 @@ struct CartView: View {
                     }
                 }
             }
+            .padding(.top)
             .navigationTitle("My Cart")
-            .padding(.top, 15)
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
+
+
 
 private func payNow() {
     guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
@@ -94,5 +97,6 @@ struct CartView_Previews: PreviewProvider {
             .environmentObject(CartManager())
     }
 }
+
 
 

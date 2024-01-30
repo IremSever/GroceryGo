@@ -30,6 +30,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 50)
                         Text("Get Started")
                             .foregroundColor(.white)
+                            .font(.system(size: 20))
                             .bold()
                     }
                 }.frame(width: 200, height: 70)
