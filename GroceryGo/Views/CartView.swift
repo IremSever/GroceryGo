@@ -10,6 +10,7 @@ import SwiftUI
 struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
     @State var isPayment = false
+    @State var changeScreen = false
 
     var body: some View {
         NavigationView {
@@ -29,7 +30,6 @@ struct CartView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.green)
-                            .opacity(0.5)
                             .frame(width: 350, height: 100)
                             .overlay(
                                 VStack {
@@ -49,7 +49,9 @@ struct CartView: View {
                     }
                     .padding(.bottom, -60)
 
-                    ButtonPay(payNowAction: payNow)
+                    ButtonPay(payNowAction: payNow).navigationDestination(isPresented: $changeScreen) {
+                        OrderView()
+                    }
                 }
             }
             .navigationTitle("My Cart")
