@@ -58,7 +58,7 @@ struct CartView: View {
                 }
             }
             .navigationTitle("My Cart")
-            .padding(.top)
+            .padding(.top, 15)
         }
     }
 }
