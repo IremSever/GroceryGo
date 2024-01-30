@@ -41,7 +41,7 @@ struct CartView: View {
                                         .foregroundColor(Color.white)
                                         .frame(width: 350, alignment: .leading)
                                         .padding(.leading, 60)
-                                    Text("₺\(String(cartManager.total))")
+                                    Text("₺\(String(format: "%.2f", cartManager.total))") // Total price formatted as float
                                         .font(.system(size: 26, weight: .bold))
                                         .foregroundColor(Color.white)
                                         .frame(width: 350, alignment: .leading)
@@ -61,46 +61,38 @@ struct CartView: View {
             .padding(.top)
         }
     }
-    private func formatPrice(_ price: Float) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = "₺"
-        return formatter.string(from: NSNumber(value: price)) ?? ""
-    }
 }
 
+private func payNow() {
+    guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
+        print("Invalid URL")
+        return
+    }
 
-    private func payNow() {
-        guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
-            print("Invalid URL")
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Error: \(error.localizedDescription)")
             return
         }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                print("Response status code: \(response.statusCode)")
-            }
-
-            if let data = data {
-                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
-            }
-        }.resume()
-        
-    }
-
-    
-    struct CartView_Previews: PreviewProvider {
-        static var previews: some View {
-            CartView()
-                .environmentObject(CartManager())
+        if let response = response as? HTTPURLResponse {
+            print("Response status code: \(response.statusCode)")
         }
+
+        if let data = data {
+            print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+        }
+    }.resume()
+}
+
+struct CartView_Previews: PreviewProvider {
+    static var previews: some View {
+        CartView()
+            .environmentObject(CartManager())
     }
+}
+
 
