@@ -54,18 +54,19 @@ class CartManager: ObservableObject {
     
     func removeFromCart(product: Products) {
         if let index = cartItems.firstIndex(where: { $0.product.id == product.id }) {
-            cartItems[index].quantity -= 1
-            if cartItems[index].quantity == 0 {
-                cartItems.remove(at: index)
-            }
-            total -= product.price
-            amount -= 1
-            
+            let removedQuantity = cartItems[index].quantity
+            cartItems[index].quantity = 0
+            total -= product.price * Float(removedQuantity)
+            amount -= removedQuantity
+
             if let productIndex = products.firstIndex(where: { $0.id == product.id }) {
-                products[productIndex].stock += 1
+                products[productIndex].stock += removedQuantity
             }
+
+            cartItems.remove(at: index)
         }
     }
+
 
     func cartItemCount(for product: Products) -> Int {
         cartItems.first { $0.product.id == product.id }?.quantity ?? 0

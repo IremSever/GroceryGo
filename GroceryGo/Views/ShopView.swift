@@ -13,7 +13,7 @@ struct ShopView: View {
     @State private var isDataLoaded = false
     @State var errorMessage = ""
         
-    var columns = [GridItem(.adaptive(minimum: 120), spacing: 12)]
+    var columns = [GridItem(.adaptive(minimum: 120), spacing: 1)]
     var body: some View {
         NavigationView {
             ScrollView {
@@ -40,7 +40,7 @@ struct ShopView: View {
                                     .environmentObject(cartManager)
                             }
                         }
-                        .padding(.top, 20)
+                        .padding(.all, 15)
                     }
                 }
             }
