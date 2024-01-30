@@ -37,12 +37,14 @@ struct ProductCard: View {
                         .frame(maxWidth: .infinity, alignment: .center)
 
                     Text(product.name)
-                        .font(.caption).bold()
+                        .font(.caption)
+                        .bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
 
-                    Text("Stock: \(product.stock)") // Display product's stock here
-
-                    // Removed the onTapGesture here
+                    Text("Stock: \(product.stock)")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .bottom)
+                        .foregroundColor(.gray)
                 }
                 .padding()
                 .frame(width: 105, height: 80)
