@@ -41,7 +41,7 @@ struct ProductRow: View {
                 .frame(width: 40, height: 24)
                 .background(Color.green)
                 .cornerRadius(5)
-                .offset(x: 4)
+                .offset(x: 20)
 
             HStack {
                 Button(action: {
@@ -52,7 +52,7 @@ struct ProductRow: View {
                         .padding(4)
                         .background(Color.red)
                         .cornerRadius(5)
-                        .offset(x: -1)
+                        .offset(x: 14)
                 }
 
                 Button(action: {
@@ -65,7 +65,7 @@ struct ProductRow: View {
                         .cornerRadius(5)
                     
                 }
-                .offset(x: -115)
+                .offset(x: -100)
             }
 
             if isTrashVisible {
