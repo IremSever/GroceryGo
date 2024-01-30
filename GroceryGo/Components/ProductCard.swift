@@ -40,11 +40,19 @@ struct ProductCard: View {
                         .font(.caption)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
-
-                    Text("Stock: \(product.stock)")
-                        .font(.caption)
-                        .frame(maxWidth: .infinity, alignment: .bottom)
-                        .foregroundColor(.gray)
+                    if product.stock > 0 {
+                        Text("Stock: \(product.stock)")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .bottom)
+                            .foregroundColor(.gray)
+                    } else {
+                        Text("Out of Stock")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .bottom)
+                            .foregroundColor(.red)
+                    }
+                        
+                    
                 }
                 .padding()
                 .frame(width: 105, height: 80)
