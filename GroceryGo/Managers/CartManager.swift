@@ -60,6 +60,10 @@ class CartManager: ObservableObject {
             }
             total -= product.price
             amount -= 1
+            
+            if let productIndex = products.firstIndex(where: { $0.id == product.id }) {
+                products[productIndex].stock += 1
+            }
         }
     }
 
@@ -67,5 +71,3 @@ class CartManager: ObservableObject {
         cartItems.first { $0.product.id == product.id }?.quantity ?? 0
     }
 }
-
-

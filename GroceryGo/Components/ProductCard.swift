@@ -81,10 +81,10 @@ struct ProductCard: View {
         .overlay(
             Image(systemName: "plus")
                 .padding(8)
-                .foregroundColor(stock > 0 ? .white : .gray)
+                .foregroundColor(.white)
                 .background(stock > 0 ? Color.green : Color.gray.opacity(0.7))
                 .cornerRadius(50)
-                .offset(x: 45, y: -40)
+                .offset(x: 45, y: -45)
                 .padding()
                 .onTapGesture {
                     if stock > 0 {

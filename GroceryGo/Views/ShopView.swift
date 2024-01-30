@@ -65,6 +65,7 @@ struct ShopView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
     }
     
     struct ShopView_Previews: PreviewProvider {

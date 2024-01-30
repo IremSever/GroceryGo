@@ -61,6 +61,14 @@ struct CartView: View {
             .padding(.top)
         }
     }
+    private func formatPrice(_ price: Float) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "₺"
+        return formatter.string(from: NSNumber(value: price)) ?? ""
+    }
+}
+
 
     private func payNow() {
         guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
@@ -85,19 +93,14 @@ struct CartView: View {
                 print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
             }
         }.resume()
+        
     }
 
-    private func formatPrice(_ price: Float) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = "₺"
-        return formatter.string(from: NSNumber(value: price)) ?? ""
-    }
-
+    
     struct CartView_Previews: PreviewProvider {
         static var previews: some View {
             CartView()
                 .environmentObject(CartManager())
         }
     }
-}
+
