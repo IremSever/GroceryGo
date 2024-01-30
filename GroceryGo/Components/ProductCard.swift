@@ -74,7 +74,7 @@ struct ProductCard: View {
                 .padding()
                 .frame(width: 105, height: 80)
                 .cornerRadius(5)
-                .offset(y: 85)
+                .offset(y: 80)
                 Spacer()
             }
         }
