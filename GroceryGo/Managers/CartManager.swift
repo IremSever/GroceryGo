@@ -78,28 +78,14 @@ class CartManager: ObservableObject {
         cartItems.first { $0.product.id == product.id }?.quantity ?? 0
     }
     
-    func payNow() {
-        guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
-            print("Invalid URL")
-            return
-        }
+    func payNow() async throws{
+        let url = URL.postPayment
+        let (postData, postResponse) = try await URLSession.shared.data(from: url)
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        print("Response Status Code: \((postResponse as? HTTPURLResponse)?.statusCode ?? -1)")
+        print(String(data: postData, encoding: .utf8) ?? "Invalid data")
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                print("Response status code: \(response.statusCode)")
-            }
-
-            if let data = data {
-                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
-            }
-        }.resume()
+        let postDecodedData = try JSONDecoder().decode(RootClass.self, from: postData)
+        products = postDecodedData.data
     }
 }

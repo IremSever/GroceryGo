@@ -28,4 +28,10 @@ extension URL {
         URL(string: "https://i.tmgrup.com.tr/mulakat/get-liste.json")!
     }
     
+    
+    
+    static var postPayment: URL {
+        URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json")!
+    }
+    
 }

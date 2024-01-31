@@ -52,7 +52,16 @@ struct CartView: View {
                     }
                     .padding(.bottom, -60)
 
-                    ButtonPay(payNowAction: cartManager.payNow).navigationDestination(isPresented: $changeScreen) {
+                    ButtonPay(payNowAction: {
+                        Task {
+                            do {
+                                try await cartManager.payNow()
+                                changeScreen = true
+                            } catch {
+                                print("Error while paying: \(error)")
+                            }
+                        }
+                    }).navigationDestination(isPresented: $changeScreen) {
                         OrderView()
                     }
                 }
@@ -65,8 +74,6 @@ struct CartView: View {
         .navigationBarHidden(true)
     }
 }
-
-
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
