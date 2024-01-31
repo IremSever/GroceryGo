@@ -11,6 +11,7 @@ struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
     @State var isPayment = false
     @State var changeScreen = false
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
@@ -65,6 +66,15 @@ struct CartView: View {
             }
             .padding(.top)
             .navigationTitle("My Cart")
+            .navigationBarItems(leading:
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.title)
+                        .foregroundColor(.green)
+                }
+            )
             .navigationViewStyle(StackNavigationViewStyle())
         }
         .navigationBarBackButtonHidden(true)
@@ -81,6 +91,7 @@ struct CartView_Previews: PreviewProvider {
             .environmentObject(CartManager())
     }
 }
+
 
 
 
