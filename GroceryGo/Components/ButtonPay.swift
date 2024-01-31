@@ -10,10 +10,12 @@ import SwiftUI
 struct ButtonPay: View {
     var payNowAction: () -> Void
     @State private var isPresented = false
+    @Binding var changeScreen: Bool
     
     var body: some View {
         Button(action: {
             payNowAction()
+            changeScreen = true // Set the state to trigger navigation
         }) {
             RoundedRectangle(cornerRadius: 10)
                 .strokeBorder()
@@ -32,6 +34,6 @@ struct ButtonPay: View {
 
 struct ButtonPay_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonPay(payNowAction: {})
+        ButtonPay(payNowAction: {}, changeScreen: .constant(false))
     }
 }

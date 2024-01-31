@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OrderView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var navigateToShopView = false
+    @State private var navigateToContentView = false
 
     var body: some View {
         VStack(spacing: 30) {
@@ -23,12 +23,8 @@ struct OrderView: View {
                 .foregroundColor(.orange)
                 .offset(y: -300)
 
-            NavigationLink(destination: ShopView(), isActive: $navigateToShopView) {
-                EmptyView()
-            }
-            
             Button("Back Home") {
-                navigateToShopView = true
+                navigateToContentView = true
             }
             .frame(width: 150, height: 50)
             .font(.system(size: 20))
@@ -37,6 +33,9 @@ struct OrderView: View {
             .bold()
             .cornerRadius(10)
             .offset(y: -200)
+            .fullScreenCover(isPresented: $navigateToContentView) {
+                ContentView()
+            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
@@ -48,3 +47,4 @@ struct OrderView_Previews: PreviewProvider {
         OrderView()
     }
 }
+

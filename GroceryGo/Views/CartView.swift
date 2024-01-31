@@ -56,14 +56,11 @@ struct CartView: View {
                         Task {
                             do {
                                 try await cartManager.payNow()
-                                changeScreen = true
                             } catch {
                                 print("Error while paying: \(error)")
                             }
                         }
-                    }).navigationDestination(isPresented: $changeScreen) {
-                        OrderView()
-                    }
+                    }, changeScreen: $changeScreen)
                 }
             }
             .padding(.top)
@@ -72,8 +69,12 @@ struct CartView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .fullScreenCover(isPresented: $changeScreen) {
+            OrderView()
+        }
     }
 }
+
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
