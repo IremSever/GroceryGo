@@ -37,7 +37,7 @@ struct ProductCard: View {
                         .frame(maxWidth: .infinity, alignment: .center)
 
                     Text(product.name)
-                        .font(.caption)
+                        .font(.system(size: 9))
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .bottom)
                     if product.stock > 0 {
