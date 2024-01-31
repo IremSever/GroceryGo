@@ -26,6 +26,7 @@ struct ButtonPay: View {
                 .font(.system(size: 25, weight: .bold))
                 .offset(x: -118)
         }.offset(x: 150, y: -45)
+        
     }
 }
 
