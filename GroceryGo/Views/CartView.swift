@@ -52,7 +52,7 @@ struct CartView: View {
                     }
                     .padding(.bottom, -60)
 
-                    ButtonPay(payNowAction: payNow).navigationDestination(isPresented: $changeScreen) {
+                    ButtonPay(payNowAction: cartManager.payNow).navigationDestination(isPresented: $changeScreen) {
                         OrderView()
                     }
                 }
@@ -61,35 +61,11 @@ struct CartView: View {
             .navigationTitle("My Cart")
             .navigationViewStyle(StackNavigationViewStyle())
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
-
-
-private func payNow() {
-    guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
-        print("Invalid URL")
-        return
-    }
-
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        if let error = error {
-            print("Error: \(error.localizedDescription)")
-            return
-        }
-
-        if let response = response as? HTTPURLResponse {
-            print("Response status code: \(response.statusCode)")
-        }
-
-        if let data = data {
-            print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
-        }
-    }.resume()
-}
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {

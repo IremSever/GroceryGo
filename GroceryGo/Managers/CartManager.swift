@@ -74,9 +74,32 @@ class CartManager: ObservableObject {
         }
     }
 
-
-
     func cartItemCount(for product: Products) -> Int {
         cartItems.first { $0.product.id == product.id }?.quantity ?? 0
+    }
+    
+    func payNow() {
+        guard let url = URL(string: "https://i.tmgrup.com.tr/mulakat/post-onay.json") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+
+            if let response = response as? HTTPURLResponse {
+                print("Response status code: \(response.statusCode)")
+            }
+
+            if let data = data {
+                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }.resume()
     }
 }

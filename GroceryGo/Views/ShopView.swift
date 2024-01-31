@@ -65,6 +65,7 @@ struct ShopView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
     
