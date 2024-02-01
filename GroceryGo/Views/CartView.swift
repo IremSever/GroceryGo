@@ -66,7 +66,9 @@ struct CartView: View {
             }
             .padding(.top)
             .navigationTitle("My Cart")
-            .navigationBarItems(leading:
+            
+            //back to ShopView()
+            /*.navigationBarItems(leading:
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
@@ -74,7 +76,8 @@ struct CartView: View {
                         .font(.title)
                         .foregroundColor(.green)
                 }
-            )
+            )*/
+            
             .navigationViewStyle(StackNavigationViewStyle())
         }
         .navigationBarBackButtonHidden(true)

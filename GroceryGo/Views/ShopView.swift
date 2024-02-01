@@ -11,7 +11,7 @@ struct ShopView: View {
     @StateObject var cartManager = CartManager()
     @State private var isDataLoaded = false
     @State var errorMessage = ""
-    @State private var isCartViewPresented = false // State to control the presentation of CartView
+    @State private var isCartViewPresented = false
         
     var columns = [GridItem(.adaptive(minimum: 120), spacing: 1)]
     var body: some View {
