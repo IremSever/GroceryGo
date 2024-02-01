@@ -4,7 +4,6 @@
 //
 //  Created by İrem Sever on 15.01.2024.
 //
-
 import SwiftUI
 
 struct ShopView: View {
@@ -12,6 +11,7 @@ struct ShopView: View {
     @StateObject var cartManager = CartManager()
     @State private var isDataLoaded = false
     @State var errorMessage = ""
+    @State private var isCartViewPresented = false // State to control the presentation of CartView
         
     var columns = [GridItem(.adaptive(minimum: 120), spacing: 1)]
     var body: some View {
@@ -47,9 +47,14 @@ struct ShopView: View {
             .navigationTitle("Grocery Go")
             .navigationViewStyle(StackNavigationViewStyle())
             .toolbar {
-                NavigationLink(destination: CartView().environmentObject(cartManager)) {
-                    ButtonCart(cartManager: cartManager)
-                }
+                ButtonCart(cartManager: cartManager)
+                    .onTapGesture {
+                        isCartViewPresented = true
+                    }
+            }
+            .sheet(isPresented: $isCartViewPresented) {
+                CartView()
+                    .environmentObject(cartManager)
             }
             Text(errorMessage)
         }
