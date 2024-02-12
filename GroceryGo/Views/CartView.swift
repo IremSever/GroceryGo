@@ -79,6 +79,11 @@ struct CartView: View {
             )*/
             
             .navigationViewStyle(StackNavigationViewStyle())
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

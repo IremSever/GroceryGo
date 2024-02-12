@@ -9,7 +9,6 @@ import SwiftUI
 struct ShopView: View {
    
     @StateObject var cartManager = CartManager()
-    @State private var isDataLoaded = false
     @State var errorMessage = ""
     @State private var isCartViewPresented = false
         
@@ -18,21 +17,9 @@ struct ShopView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    if !isDataLoaded {
+                    if cartManager.products.isEmpty {
                         ProgressView("Loading products...")
-                            .onAppear {
-                                Task {
-                                    do {
-                                        try await cartManager.fetchProducts()
-                                        isDataLoaded = true
-                                    } catch {
-                                        errorMessage = error.localizedDescription
-                                    }
-                                }
-                            }
-                    } else if cartManager.products.isEmpty {
-                        Text("No products available")
-                            .padding()
+
                     } else {
                         LazyVGrid(columns: columns, spacing: 80) {
                             ForEach(cartManager.products, id: \.id) { product in
@@ -52,24 +39,14 @@ struct ShopView: View {
                         isCartViewPresented = true
                     }
             }
-            .sheet(isPresented: $isCartViewPresented) {
+            .fullScreenCover(isPresented: $isCartViewPresented) {
                 CartView()
                     .environmentObject(cartManager)
             }
             Text(errorMessage)
         }
         .navigationTitle("Grocery Go")
-        .onAppear {
-            Task {
-                do {
-                    try await cartManager.fetchProducts()
-                    isDataLoaded = true
-                } catch {
-                    print("Error fetching products: \(error)")
-                    errorMessage = error.localizedDescription
-                }
-            }
-        }
+ 
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }

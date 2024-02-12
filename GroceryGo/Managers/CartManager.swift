@@ -21,15 +21,31 @@ class CartManager: ObservableObject {
         var stock: Int
     }
     
+    init() {
+        Task {
+            do {
+                try await fetchProducts()
+            } catch {
+                print("Error fetching products: \(error)")
+            }
+        }
+    }
+    
     func fetchProducts() async throws {
-        let url = URL.allProducts
-        let (data, response) = try await URLSession.shared.data(from: url)
-
-        print("Response Status Code: \((response as? HTTPURLResponse)?.statusCode ?? -1)")
-        print(String(data: data, encoding: .utf8) ?? "Invalid data")
-
-        let decodedData = try JSONDecoder().decode(RootClass.self, from: data)
-        products = decodedData.data
+     
+            let url = URL.allProducts
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            print("Response Status Code: \((response as? HTTPURLResponse)?.statusCode ?? -1)")
+            print(String(data: data, encoding: .utf8) ?? "Invalid data")
+            
+            let decodedData = try JSONDecoder().decode(RootClass.self, from: data)
+            DispatchQueue.main.async {
+                self.products = decodedData.data
+                
+                
+            }
+        
     }
 
     func addToCart(product: Products) {

@@ -10,18 +10,29 @@ import SwiftUI
 struct OrderView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var navigateToContentView = false
+    
+    private var orderImage: some View {
+        Image("order")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 1000, height: 850)
+    }
+    
+    private var thanxText: some View {
+        Text("Thank You For Your Order!")
+            .font(.system(size: 31, weight: .bold, design: .rounded))
+            .multilineTextAlignment(.center)
+            .foregroundColor(.orange)
+            .offset(y: -300)
+    }
 
     var body: some View {
         VStack(spacing: 30) {
-            Image("order")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 1000, height: 850)
-            Text("Thank You For Your Order!")
-                .font(.system(size: 31, weight: .bold, design: .rounded))
-                .multilineTextAlignment(.center)
-                .foregroundColor(.orange)
-                .offset(y: -300)
+            
+            orderImage
+            
+            thanxText
+   
 
             Button("Back Home") {
                 navigateToContentView = true
