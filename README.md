@@ -13,4 +13,8 @@ Easily remove excess products from your cart before completing your order.
 ### Order Completion
 Press the "Complete Order" button to finalize your purchase and proceed to the order confirmation screen.
 
+
+<img src="https://github.com/IremSever/GroceryGo/assets/99093113/557c00e8-69f8-4803-98a6-3b2761a7cf7f" alt="GroceryGoLaunch" width="200"/>
 <img src="https://github.com/IremSever/GroceryGo/assets/99093113/5fee30e6-a63c-4f6b-8548-1227ce5d2eb8" alt="GroceryGoMain" width="200"/>
+<img src="https://github.com/IremSever/GroceryGo/assets/99093113/36615b2e-c0ce-4eaf-94e7-418028a8d43f" alt="GroceryGoOrder" width="200"/>
+
