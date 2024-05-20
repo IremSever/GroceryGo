@@ -1,6 +1,10 @@
 # Grocery Go: Online Shopping App
 Grocery Go is a user-friendly online shopping application that allows you to manage your shopping experience smoothly. With Grocery Go, you can easily add products from your favorite local markets to your cart. If you've added more products than you need, you can easily remove unnecessary items from your cart. When your shopping is complete, simply press the "Complete Order" button, and you will be directed to the order confirmation screen.
 
+Built using the MVC architecture and developed as a SwiftUI project, GroceryGo ensures a smooth and responsive user experience with a modern, clean interface.
+
+The app features seamless API integration, allowing for real-time updates and access to products, stock information, and pricing details from trusted sources.
+
 ### Easy Shopping
 Easily browse products and add them to your cart within the app.
 
